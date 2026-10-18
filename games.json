@@ -1,0 +1,67 @@
+{
+  "_説明": "寺子屋の 入口の ページの 中身。科目・単元・並び順を 変えるときは subjects を、ゲームの 説明を 変えるときは games を 直して、python3 build.py で index.html を 作り直す。",
+  "subjects": [
+    {
+      "name": "数学Ⅱ",
+      "units": [
+        {
+          "name": "図形と方程式",
+          "games": [
+            "ryouiki-quest"
+          ]
+        },
+        {
+          "name": "三角関数",
+          "games": [
+            "tan-i-en-quest",
+            "sankaku-graph-quest",
+            "kahou-quest"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "数学A",
+      "units": [
+        {
+          "name": "場合の数と確率",
+          "games": [
+            "kakuritsu-quest"
+          ]
+        }
+      ]
+    }
+  ],
+  "games": {
+    "ryouiki-quest": {
+      "title": "領域クエスト",
+      "topic": "不等式の 表す 領域",
+      "desc": "不等式が 表す 領域を、境界線の どちら側かを みきわめて ぬる。",
+      "chapters": "LV1〜LV5（各2戦）→ BOSS（4戦）"
+    },
+    "tan-i-en-quest": {
+      "title": "単位円クエスト",
+      "topic": "三角関数（単位円）",
+      "desc": "単位円の 上の 場所・符号・値を みきわめる。方程式・不等式・最大最小まで。",
+      "chapters": "角の いち ／ ＋ と − ／ あたい ／ 方程式 ／ 不等式 ／ のこり2つ ／ 最大・最小 → さいごの 章"
+    },
+    "sankaku-graph-quest": {
+      "title": "三角グラフクエスト",
+      "topic": "三角関数の グラフ",
+      "desc": "sin・cos・tan の グラフの かたち・周期・値を みきわめる。平行移動（ずれ）まで。",
+      "chapters": "かたち ／ しゅうき ／ あたい ／ ＋ と − ／ 0 と 漸近線 ／ ずれ → さいごの 章"
+    },
+    "kahou-quest": {
+      "title": "加法定理クエスト",
+      "topic": "加法定理",
+      "desc": "公式の かたち、角の わけ方、符号を みきわめる。2倍角・2直線の なす角まで。",
+      "chapters": "かたち ／ わける ／ ふごう ／ 倍角 ／ なす角 → さいごの 章"
+    },
+    "kakuritsu-quest": {
+      "title": "確率クエスト",
+      "topic": "確率",
+      "desc": "どの 考え方で 数えるかを みきわめて、なかまを あつめる。図を ぬる 問題も。",
+      "chapters": "第1章〜第6章 ＋ 裏ダンジョン"
+    }
+  }
+}

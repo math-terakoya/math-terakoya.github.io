@@ -20,6 +20,8 @@ h2 { margin: 0 0 10px; font-size: 19px; color: #ff0; }
 .lead { margin: 6px 0 12px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { border: 1px solid #ff0; color: #ff0; padding: 2px 10px; font-size: 14px; }
+h2.subject { margin: 22px 0 4px; font-size: 22px; color: #fff; border-bottom: 2px solid #ff0; padding-bottom: 4px; }
+.unitname { color: #7fe8ff; font-weight: bold; margin: 12px 0 8px; }
 .game { display: grid; grid-template-columns: 132px 1fr; gap: 16px; align-items: start; }
 .game img.shot { width: 132px; border: 2px solid #555; display: block; }
 .game h3 { margin: 0; font-size: 20px; color: #fff; }
@@ -61,61 +63,61 @@ a { color: #7fe8ff; }
 
   <section class="win" id="games">
     <h2>▼ ゲーム（5本）</h2>
-
-    <div class="game win">
-      <img class="shot" src="img/ryouiki-quest.jpg" alt="領域クエストの画面" width="360" height="640">
-      <div>
-        <h3>領域クエスト</h3>
-        <div class="unit">数学Ⅱ ／ 不等式の 表す 領域</div>
-        <p>不等式が 表す 領域を、境界線の どちら側かを みきわめて ぬる。</p>
-        <div class="chapters">LV1〜LV5（各2戦）→ BOSS（4戦）</div>
-        <div class="btns"><a class="btn" href="ryouiki-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-ryouiki-quest">QR を 大きく 表示</a></div>
+    <h2 class="subject">数学Ⅱ</h2>
+    <div class="unitname">図形と方程式</div>
+      <div class="game win">
+        <img class="shot" src="img/ryouiki-quest.jpg" alt="領域クエストの画面" width="360" height="640">
+        <div>
+          <h3>領域クエスト</h3>
+          <div class="unit">数学Ⅱ ／ 不等式の 表す 領域</div>
+          <p>不等式が 表す 領域を、境界線の どちら側かを みきわめて ぬる。</p>
+          <div class="chapters">LV1〜LV5（各2戦）→ BOSS（4戦）</div>
+          <div class="btns"><a class="btn" href="ryouiki-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-ryouiki-quest">QR を 大きく 表示</a></div>
+        </div>
       </div>
-    </div>
-
-    <div class="game win">
-      <img class="shot" src="img/tan-i-en-quest.jpg" alt="単位円クエストの画面" width="360" height="640">
-      <div>
-        <h3>単位円クエスト</h3>
-        <div class="unit">数学Ⅱ ／ 三角関数（単位円）</div>
-        <p>単位円の 上の 場所・符号・値を みきわめる。方程式・不等式・最大最小まで。</p>
-        <div class="chapters">角の いち ／ ＋ と − ／ あたい ／ 方程式 ／ 不等式 ／ のこり2つ ／ 最大・最小 → さいごの 章</div>
-        <div class="btns"><a class="btn" href="tan-i-en-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-tan-i-en-quest">QR を 大きく 表示</a></div>
+    <div class="unitname">三角関数</div>
+      <div class="game win">
+        <img class="shot" src="img/tan-i-en-quest.jpg" alt="単位円クエストの画面" width="360" height="640">
+        <div>
+          <h3>単位円クエスト</h3>
+          <div class="unit">数学Ⅱ ／ 三角関数（単位円）</div>
+          <p>単位円の 上の 場所・符号・値を みきわめる。方程式・不等式・最大最小まで。</p>
+          <div class="chapters">角の いち ／ ＋ と − ／ あたい ／ 方程式 ／ 不等式 ／ のこり2つ ／ 最大・最小 → さいごの 章</div>
+          <div class="btns"><a class="btn" href="tan-i-en-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-tan-i-en-quest">QR を 大きく 表示</a></div>
+        </div>
       </div>
-    </div>
-
-    <div class="game win">
-      <img class="shot" src="img/sankaku-graph-quest.jpg" alt="三角グラフクエストの画面" width="360" height="640">
-      <div>
-        <h3>三角グラフクエスト</h3>
-        <div class="unit">数学Ⅱ ／ 三角関数の グラフ</div>
-        <p>sin・cos・tan の グラフの かたち・周期・値を みきわめる。平行移動（ずれ）まで。</p>
-        <div class="chapters">かたち ／ しゅうき ／ あたい ／ ＋ と − ／ 0 と 漸近線 ／ ずれ → さいごの 章</div>
-        <div class="btns"><a class="btn" href="sankaku-graph-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-sankaku-graph-quest">QR を 大きく 表示</a></div>
+      <div class="game win">
+        <img class="shot" src="img/sankaku-graph-quest.jpg" alt="三角グラフクエストの画面" width="360" height="640">
+        <div>
+          <h3>三角グラフクエスト</h3>
+          <div class="unit">数学Ⅱ ／ 三角関数の グラフ</div>
+          <p>sin・cos・tan の グラフの かたち・周期・値を みきわめる。平行移動（ずれ）まで。</p>
+          <div class="chapters">かたち ／ しゅうき ／ あたい ／ ＋ と − ／ 0 と 漸近線 ／ ずれ → さいごの 章</div>
+          <div class="btns"><a class="btn" href="sankaku-graph-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-sankaku-graph-quest">QR を 大きく 表示</a></div>
+        </div>
       </div>
-    </div>
-
-    <div class="game win">
-      <img class="shot" src="img/kahou-quest.jpg" alt="加法定理クエストの画面" width="360" height="640">
-      <div>
-        <h3>加法定理クエスト</h3>
-        <div class="unit">数学Ⅱ ／ 加法定理</div>
-        <p>公式の かたち、角の わけ方、符号を みきわめる。2倍角・2直線の なす角まで。</p>
-        <div class="chapters">かたち ／ わける ／ ふごう ／ 倍角 ／ なす角 → さいごの 章</div>
-        <div class="btns"><a class="btn" href="kahou-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-kahou-quest">QR を 大きく 表示</a></div>
+      <div class="game win">
+        <img class="shot" src="img/kahou-quest.jpg" alt="加法定理クエストの画面" width="360" height="640">
+        <div>
+          <h3>加法定理クエスト</h3>
+          <div class="unit">数学Ⅱ ／ 加法定理</div>
+          <p>公式の かたち、角の わけ方、符号を みきわめる。2倍角・2直線の なす角まで。</p>
+          <div class="chapters">かたち ／ わける ／ ふごう ／ 倍角 ／ なす角 → さいごの 章</div>
+          <div class="btns"><a class="btn" href="kahou-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-kahou-quest">QR を 大きく 表示</a></div>
+        </div>
       </div>
-    </div>
-
-    <div class="game win">
-      <img class="shot" src="img/kakuritsu-quest.jpg" alt="確率クエストの画面" width="360" height="640">
-      <div>
-        <h3>確率クエスト</h3>
-        <div class="unit">数学A ／ 確率</div>
-        <p>どの 考え方で 数えるかを みきわめて、なかまを あつめる。図を ぬる 問題も。</p>
-        <div class="chapters">第1章〜第6章 ＋ 裏ダンジョン</div>
-        <div class="btns"><a class="btn" href="kakuritsu-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-kakuritsu-quest">QR を 大きく 表示</a></div>
+    <h2 class="subject">数学A</h2>
+    <div class="unitname">場合の数と確率</div>
+      <div class="game win">
+        <img class="shot" src="img/kakuritsu-quest.jpg" alt="確率クエストの画面" width="360" height="640">
+        <div>
+          <h3>確率クエスト</h3>
+          <div class="unit">数学A ／ 確率</div>
+          <p>どの 考え方で 数えるかを みきわめて、なかまを あつめる。図を ぬる 問題も。</p>
+          <div class="chapters">第1章〜第6章 ＋ 裏ダンジョン</div>
+          <div class="btns"><a class="btn" href="kakuritsu-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-kakuritsu-quest">QR を 大きく 表示</a></div>
+        </div>
       </div>
-    </div>
   </section>
 
   <section class="win">

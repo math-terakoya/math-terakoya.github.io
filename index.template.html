@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- © 2026 math-terakoya ／ CC BY-NC-SA 4.0（表示・非営利・継承）https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja -->
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'">
+<title>math-terakoya ― 判断だけで解く 数学クエスト</title>
+<meta name="description" content="計算しないで、判断だけで解く高校数学のゲーム。無料・登録なし。授業でそのまま使えます。">
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #000; color: #fff; }
+body { font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; line-height: 1.8; }
+main { max-width: 760px; margin: 0 auto; padding: 24px 16px 40px; }
+.mono { font-family: 'Courier New', 'Osaka-Mono', 'ＭＳ ゴシック', monospace; }
+.win { border: 3px double #fff; outline: 2px solid #000; padding: 18px 18px 14px; margin: 0 0 18px; background: #000; }
+h1 { margin: 6px 0 4px; font-size: 30px; line-height: 1.35; color: #ff0; letter-spacing: 0.04em; }
+h2 { margin: 0 0 10px; font-size: 19px; color: #ff0; }
+.brand { color: #aaa; font-size: 14px; letter-spacing: 0.1em; }
+.lead { margin: 6px 0 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid #ff0; color: #ff0; padding: 2px 10px; font-size: 14px; }
+h2.subject { margin: 22px 0 4px; font-size: 22px; color: #fff; border-bottom: 2px solid #ff0; padding-bottom: 4px; }
+.unitname { color: #7fe8ff; font-weight: bold; margin: 12px 0 8px; }
+.game { display: grid; grid-template-columns: 132px 1fr; gap: 16px; align-items: start; }
+.game img.shot { width: 132px; border: 2px solid #555; display: block; }
+.game h3 { margin: 0; font-size: 20px; color: #fff; }
+.unit { color: #7fe8ff; font-size: 14px; margin: 2px 0 6px; }
+.game p { margin: 0 0 8px; font-size: 15px; }
+.chapters { color: #ccc; font-size: 13px; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.btn { display: inline-block; text-decoration: none; padding: 8px 16px; font-weight: bold; font-size: 15px; border: 2px solid #fff; color: #ff0; background: #000; }
+.btn.sub { color: #ccc; border-color: #777; font-weight: normal; }
+ol, ul { margin: 0; padding-left: 1.3em; }
+li { margin-bottom: 6px; }
+.note { color: #aaa; font-size: 13px; }
+.foot { text-align: center; color: #888; font-size: 13px; margin-top: 26px; }
+.foot a { color: #aaa; }
+a { color: #7fe8ff; }
+/* QR を 大きく 表示（教室で 映す 用）：#qr-… を 開くと 画面いっぱいに */
+.qrbig { display: none; }
+.qrbig:target { display: flex; position: fixed; inset: 0; z-index: 10; background: #000; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 16px; text-align: center; }
+.qrbig .code { background: #fff; padding: 22px; }
+.qrbig .code img { display: block; width: min(70vw, 62vh); height: auto; image-rendering: pixelated; }
+.qrbig .name { font-size: clamp(22px, 4vw, 40px); color: #ff0; font-weight: bold; }
+.qrbig .url { font-size: clamp(14px, 2.2vw, 22px); color: #ccc; word-break: break-all; }
+@media (max-width: 480px) {
+  h1 { font-size: 25px; }
+  .game { grid-template-columns: 96px 1fr; gap: 12px; }
+  .game img.shot { width: 96px; }
+}
+</style>
+</head>
+<body>
+<main>
+  <section class="win">
+    <div class="brand mono">math-terakoya</div>
+    <h1>判断だけで解く<br>数学クエスト</h1>
+    <p class="lead">計算は しない。「どれか」を みきわめて、モンスターを たおす。<br>高校数学の 5つの 単元を、スマホ・タブレット・パソコンの ブラウザで あそべます。</p>
+    <div class="chips"><span class="chip">無料</span><span class="chip">登録なし</span><span class="chip">インストールなし</span><span class="chip">生徒の 個人情報を あつかいません</span></div>
+    <div class="btns"><a class="btn sub" href="#qr-top">このページの QR を 表示（先生どうしの 紹介に）</a></div>
+  </section>
+
+  <!-- GAMES -->
+
+  <section class="win">
+    <h2>▼ 授業での 使い方</h2>
+    <ol>
+      <li>生徒の 端末で、QR か アドレスを 開くだけです。インストールも 登録も いりません。</li>
+      <li>「QR を 大きく 表示」を 押すと、教室の 画面に 映せる 大きさの QR が 出ます。</li>
+      <li>章は どこからでも えらべます。授業で あつかった ところから 始められます。</li>
+      <li>まちがえると、まちがえ方に あわせた 説明が 出ます。</li>
+      <li>あそんだ 記録は、その 端末の ブラウザの 中に のこります。<span class="note">（ほかの 端末には 引きつがれません。ブラウザの 記録を 消すと、はじめからに なります。）</span></li>
+    </ol>
+  </section>
+
+  <section class="win">
+    <h2>▼ 学校で 使うときに</h2>
+    <ul>
+      <li>生徒の 名前・成績などを 集めたり、外に 送ったり しません。ゲームは、外への 通信を すべて 止める 設定に してあります。</li>
+      <li>広告・課金・ログインは ありません。</li>
+      <li>ゲームは ファイル1つで 動きます。一度 開けば、あそんで いる とちゅうで 通信は しません。</li>
+    </ul>
+  </section>
+
+  <section class="win">
+    <h2>▼ 使ってよい 範囲（ライセンス）</h2>
+    <p style="margin:0 0 8px">CC BY-NC-SA 4.0（表示・非営利・継承）です。</p>
+    <ul>
+      <li>授業・家庭学習で、自由に 使えます。画面を 映したり、写真を プリントに 使ったりも 自由です。</li>
+      <li>販売や、有料の 教材・サービスに 組みこむ ことは できません。</li>
+      <li>作りかえて 配るときは、同じ 条件（CC BY-NC-SA）で、作者「math-terakoya」を 表示して ください。</li>
+    </ul>
+    <p class="note" style="margin:8px 0 0"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">ライセンスの 説明（クリエイティブ・コモンズ）</a></p>
+  </section>
+
+  <p class="foot mono">© 2026 math-terakoya　CC BY-NC-SA 4.0</p>
+</main>
+
+<!-- QR を 大きく 表示 -->
+<div class="qrbig" id="qr-top"><div class="code"><img src="qr/top.png" alt="このページのQRコード" width="280" height="280"></div><div class="name">math-terakoya</div><div class="url">https://math-terakoya.github.io/</div><a class="btn" href="#">とじる</a></div>
+<!-- QRS -->
+</body>
+</html>
