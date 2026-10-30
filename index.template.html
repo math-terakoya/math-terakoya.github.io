@@ -22,13 +22,25 @@ h2 { margin: 0 0 10px; font-size: 19px; color: #ff0; }
 .chip { border: 1px solid #ff0; color: #ff0; padding: 2px 10px; font-size: 14px; }
 h2.subject { margin: 22px 0 4px; font-size: 22px; color: #fff; border-bottom: 2px solid #ff0; padding-bottom: 4px; }
 .unitname { color: #7fe8ff; font-weight: bold; margin: 12px 0 8px; }
-.game { display: grid; grid-template-columns: 132px 1fr; gap: 16px; align-items: start; }
-.game img.shot { width: 132px; border: 2px solid #555; display: block; }
-.game h3 { margin: 0; font-size: 20px; color: #fff; }
-.unit { color: #7fe8ff; font-size: 14px; margin: 2px 0 6px; }
-.game p { margin: 0 0 8px; font-size: 15px; }
+/* 科目の 切りかえ（スクリプトなし）：#m2 などを 開くと その 科目だけ。何も 開いて いない ときは さいしょの 科目（.def） */
+.subjs { display: flex; flex-direction: column; }
+.subj { display: none; }
+.subj:target, .subj.def { display: block; }
+.subj:target ~ .subj.def { display: none; }
+.tabs { display: flex; gap: 6px; margin: 4px 0 10px; position: sticky; top: 0; background: #000; padding: 6px 0; z-index: 2; }
+.tabs a { flex: 1; text-align: center; text-decoration: none; padding: 8px 4px; border: 2px solid #777; color: #ccc; font-weight: bold; font-size: 16px; }
+.tabs a.on { border-color: #ff0; color: #000; background: #ff0; }
+.tabnote { margin: -4px 0 4px; }
+/* 1本の 欄：写真は 小さく 左、説明は 1行、くわしい 説明と 章は「くわしく」で 開く */
+.game { display: grid; grid-template-columns: 76px 1fr; gap: 12px; align-items: start; border-top: 1px solid #333; padding: 10px 0; }
+.game img.shot { width: 76px; height: auto; border: 2px solid #555; display: block; }
+.game h3 { margin: 0; font-size: 18px; color: #fff; line-height: 1.4; }
+.unit { color: #7fe8ff; font-size: 13px; margin: 2px 0 2px; }
+.game p { margin: 6px 0 6px; font-size: 14px; }
 .chapters { color: #ccc; font-size: 13px; }
-.btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+details summary { cursor: pointer; color: #aaa; font-size: 13px; margin-top: 6px; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.game .btns .btn { padding: 5px 14px; font-size: 14px; }
 .btn { display: inline-block; text-decoration: none; padding: 8px 16px; font-weight: bold; font-size: 15px; border: 2px solid #fff; color: #ff0; background: #000; }
 .btn.sub { color: #ccc; border-color: #777; font-weight: normal; }
 ol, ul { margin: 0; padding-left: 1.3em; }
@@ -46,8 +58,9 @@ a { color: #7fe8ff; }
 .qrbig .url { font-size: clamp(14px, 2.2vw, 22px); color: #ccc; word-break: break-all; }
 @media (max-width: 480px) {
   h1 { font-size: 25px; }
-  .game { grid-template-columns: 96px 1fr; gap: 12px; }
-  .game img.shot { width: 96px; }
+  .game { grid-template-columns: 64px 1fr; gap: 10px; }
+  .game img.shot { width: 64px; }
+  .tabs a { font-size: 15px; }
 }
 </style>
 </head>
@@ -67,7 +80,8 @@ a { color: #7fe8ff; }
     <h2>▼ 授業での 使い方</h2>
     <ol>
       <li>生徒の 端末で、QR か アドレスを 開くだけです。インストールも 登録も いりません。</li>
-      <li>「QR を 大きく 表示」を 押すと、教室の 画面に 映せる 大きさの QR が 出ます。</li>
+      <li>ゲームの 「QR」を 押すと、教室の 画面に 映せる 大きさの QR が 出ます。</li>
+      <li>上の 「数学Ⅰ・数学Ⅱ・数学A」で 科目を 切りかえます。各ゲームの 説明と 章は 「くわしく」で 開きます。</li>
       <li>章は どこからでも えらべます。授業で あつかった ところから 始められます。</li>
       <li>まちがえると、まちがえ方に あわせた 説明が 出ます。</li>
       <li>あそんだ 記録は、その 端末の ブラウザの 中に のこります。<span class="note">（ほかの 端末には 引きつがれません。ブラウザの 記録を 消すと、はじめからに なります。）</span></li>

@@ -22,13 +22,25 @@ h2 { margin: 0 0 10px; font-size: 19px; color: #ff0; }
 .chip { border: 1px solid #ff0; color: #ff0; padding: 2px 10px; font-size: 14px; }
 h2.subject { margin: 22px 0 4px; font-size: 22px; color: #fff; border-bottom: 2px solid #ff0; padding-bottom: 4px; }
 .unitname { color: #7fe8ff; font-weight: bold; margin: 12px 0 8px; }
-.game { display: grid; grid-template-columns: 132px 1fr; gap: 16px; align-items: start; }
-.game img.shot { width: 132px; border: 2px solid #555; display: block; }
-.game h3 { margin: 0; font-size: 20px; color: #fff; }
-.unit { color: #7fe8ff; font-size: 14px; margin: 2px 0 6px; }
-.game p { margin: 0 0 8px; font-size: 15px; }
+/* 科目の 切りかえ（スクリプトなし）：#m2 などを 開くと その 科目だけ。何も 開いて いない ときは さいしょの 科目（.def） */
+.subjs { display: flex; flex-direction: column; }
+.subj { display: none; }
+.subj:target, .subj.def { display: block; }
+.subj:target ~ .subj.def { display: none; }
+.tabs { display: flex; gap: 6px; margin: 4px 0 10px; position: sticky; top: 0; background: #000; padding: 6px 0; z-index: 2; }
+.tabs a { flex: 1; text-align: center; text-decoration: none; padding: 8px 4px; border: 2px solid #777; color: #ccc; font-weight: bold; font-size: 16px; }
+.tabs a.on { border-color: #ff0; color: #000; background: #ff0; }
+.tabnote { margin: -4px 0 4px; }
+/* 1本の 欄：写真は 小さく 左、説明は 1行、くわしい 説明と 章は「くわしく」で 開く */
+.game { display: grid; grid-template-columns: 76px 1fr; gap: 12px; align-items: start; border-top: 1px solid #333; padding: 10px 0; }
+.game img.shot { width: 76px; height: auto; border: 2px solid #555; display: block; }
+.game h3 { margin: 0; font-size: 18px; color: #fff; line-height: 1.4; }
+.unit { color: #7fe8ff; font-size: 13px; margin: 2px 0 2px; }
+.game p { margin: 6px 0 6px; font-size: 14px; }
 .chapters { color: #ccc; font-size: 13px; }
-.btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+details summary { cursor: pointer; color: #aaa; font-size: 13px; margin-top: 6px; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.game .btns .btn { padding: 5px 14px; font-size: 14px; }
 .btn { display: inline-block; text-decoration: none; padding: 8px 16px; font-weight: bold; font-size: 15px; border: 2px solid #fff; color: #ff0; background: #000; }
 .btn.sub { color: #ccc; border-color: #777; font-weight: normal; }
 ol, ul { margin: 0; padding-left: 1.3em; }
@@ -46,8 +58,9 @@ a { color: #7fe8ff; }
 .qrbig .url { font-size: clamp(14px, 2.2vw, 22px); color: #ccc; word-break: break-all; }
 @media (max-width: 480px) {
   h1 { font-size: 25px; }
-  .game { grid-template-columns: 96px 1fr; gap: 12px; }
-  .game img.shot { width: 96px; }
+  .game { grid-template-columns: 64px 1fr; gap: 10px; }
+  .game img.shot { width: 64px; }
+  .tabs a { font-size: 15px; }
 }
 </style>
 </head>
@@ -63,131 +76,130 @@ a { color: #7fe8ff; }
 
   <section class="win" id="games">
     <h2>▼ ゲーム（11本）</h2>
-    <h2 class="subject">数学Ⅰ</h2>
-    <div class="unitname">図形と計量</div>
-      <div class="game win">
-        <img class="shot" src="img/sankakuhi-zenhan-quest.jpg" alt="三角比クエストⅠ（直角三角形）の画面" width="360" height="640">
-        <div>
-          <h3>三角比クエストⅠ（直角三角形）</h3>
-          <div class="unit">数学Ⅰ ／ 三角比（直角三角形・鋭角）</div>
-          <p>数学Ⅰ。直角三角形の 斜辺・向かいの 辺・となりの 辺を みきわめ、2辺の 比が sin・cos・tan の どれかを 選ぶ。回した 三角形・辺の 長さ・たて と よこ・相互関係・90° − θ まで。モンスター図鑑を うめる。</p>
-          <div class="chapters">定義 ／ 回して 定義 ／ 辺の 長さから ／ たて・よこ ／ 相互関係 ／ 90° − θ → さいごの 章</div>
-          <div class="btns"><a class="btn" href="sankakuhi-zenhan-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-sankakuhi-zenhan-quest">QR を 大きく 表示</a></div>
-        </div>
-      </div>
-      <div class="game win">
-        <img class="shot" src="img/sankakuhi-quest.jpg" alt="三角比クエストⅡ（三角比の拡張）の画面" width="360" height="640">
-        <div>
-          <h3>三角比クエストⅡ（三角比の拡張）</h3>
-          <div class="unit">数学Ⅰ ／ 三角比の 拡張（0° ≦ θ ≦ 180°）</div>
-          <p>数学Ⅰ。半円の 上の 場所・値・符号を みきわめる。180° − θ、方程式・不等式・のこり2つ・木の 高さや 俯角まで。モンスター図鑑を うめる。</p>
-          <div class="chapters">角の いち ／ あたい ／ ＋ と − ／ 180° − θ・90° − θ ／ 方程式 ／ 不等式 ／ のこり2つ ／ はかる → さいごの 章</div>
-          <div class="btns"><a class="btn" href="sankakuhi-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-sankakuhi-quest">QR を 大きく 表示</a></div>
-        </div>
-      </div>
-      <div class="game win">
-        <img class="shot" src="img/sankakuhi-keiryou-quest.jpg" alt="三角比クエストⅢ（図形の計量）の画面" width="360" height="640">
-        <div>
-          <h3>三角比クエストⅢ（図形の計量）</h3>
-          <div class="unit">数学Ⅰ ／ 図形の 計量（正弦定理・余弦定理・面積・空間図形）</div>
-          <p>数学Ⅰ。わかって いる 辺と 角を 見て、正弦定理・余弦定理・面積の 公式の どれを、どの 形で 立てるかを みきわめる。鋭角・鈍角の 見分け、内接円、直方体の 中の 三角形まで。モンスター図鑑を うめる。</p>
-          <div class="chapters">定理を えらぶ ／ 正弦定理 ／ 余弦定理 ／ 鋭角・直角・鈍角 ／ 面積 ／ 空間図形 → さいごの 章</div>
-          <div class="btns"><a class="btn" href="sankakuhi-keiryou-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-sankakuhi-keiryou-quest">QR を 大きく 表示</a></div>
-        </div>
-      </div>
-    <h2 class="subject">数学Ⅱ</h2>
+    <p class="note tabnote">科目を えらんで ください。</p>
+    <div class="subjs">
+    <section class="subj" id="m2" data-name="数学Ⅱ">
+    <nav class="tabs"><a href="#m1">数学Ⅰ</a><a href="#m2" class="on">数学Ⅱ</a><a href="#ma">数学A</a></nav>
     <div class="unitname">図形と方程式</div>
-      <div class="game win">
+      <div class="game">
         <img class="shot" src="img/ryouiki-quest.jpg" alt="領域クエストの画面" width="360" height="640">
-        <div>
+        <div class="body">
           <h3>領域クエスト</h3>
-          <div class="unit">数学Ⅱ ／ 不等式の 表す 領域</div>
-          <p>不等式が 表す 領域を、境界線の どちら側かを みきわめて ぬる。</p>
-          <div class="chapters">LV1〜LV5（各2戦）→ BOSS（4戦）</div>
-          <div class="btns"><a class="btn" href="ryouiki-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-ryouiki-quest">QR を 大きく 表示</a></div>
+          <div class="unit">不等式の 表す 領域</div>
+          <div class="btns"><a class="btn" href="ryouiki-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-ryouiki-quest">QR</a></div>
+          <details><summary>くわしく</summary><p>不等式が 表す 領域を、境界線の どちら側かを みきわめて ぬる。</p><div class="chapters">LV1〜LV5（各2戦）→ BOSS（4戦）</div></details>
         </div>
       </div>
     <div class="unitname">三角関数</div>
-      <div class="game win">
+      <div class="game">
         <img class="shot" src="img/tan-i-en-quest.jpg" alt="単位円クエストの画面" width="360" height="640">
-        <div>
+        <div class="body">
           <h3>単位円クエスト</h3>
-          <div class="unit">数学Ⅱ ／ 三角関数（単位円）</div>
-          <p>単位円の 上の 場所・符号・値を みきわめる。方程式・不等式・最大最小まで。</p>
-          <div class="chapters">角の いち ／ ＋ と − ／ あたい ／ 方程式 ／ 不等式 ／ のこり2つ ／ 最大・最小 → さいごの 章</div>
-          <div class="btns"><a class="btn" href="tan-i-en-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-tan-i-en-quest">QR を 大きく 表示</a></div>
+          <div class="unit">三角関数（単位円）</div>
+          <div class="btns"><a class="btn" href="tan-i-en-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-tan-i-en-quest">QR</a></div>
+          <details><summary>くわしく</summary><p>単位円の 上の 場所・符号・値を みきわめる。方程式・不等式・最大最小まで。</p><div class="chapters">角の いち ／ ＋ と − ／ あたい ／ 方程式 ／ 不等式 ／ のこり2つ ／ 最大・最小 → さいごの 章</div></details>
         </div>
       </div>
-      <div class="game win">
+      <div class="game">
         <img class="shot" src="img/sankaku-graph-quest.jpg" alt="三角グラフクエストの画面" width="360" height="640">
-        <div>
+        <div class="body">
           <h3>三角グラフクエスト</h3>
-          <div class="unit">数学Ⅱ ／ 三角関数の グラフ</div>
-          <p>sin・cos・tan の グラフの かたち・周期・値を みきわめる。平行移動（ずれ）まで。</p>
-          <div class="chapters">かたち ／ しゅうき ／ あたい ／ ＋ と − ／ 0 と 漸近線 ／ ずれ → さいごの 章</div>
-          <div class="btns"><a class="btn" href="sankaku-graph-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-sankaku-graph-quest">QR を 大きく 表示</a></div>
+          <div class="unit">三角関数の グラフ</div>
+          <div class="btns"><a class="btn" href="sankaku-graph-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-sankaku-graph-quest">QR</a></div>
+          <details><summary>くわしく</summary><p>sin・cos・tan の グラフの かたち・周期・値を みきわめる。平行移動（ずれ）まで。</p><div class="chapters">かたち ／ しゅうき ／ あたい ／ ＋ と − ／ 0 と 漸近線 ／ ずれ → さいごの 章</div></details>
         </div>
       </div>
-      <div class="game win">
+      <div class="game">
         <img class="shot" src="img/kahou-quest.jpg" alt="加法定理クエストの画面" width="360" height="640">
-        <div>
+        <div class="body">
           <h3>加法定理クエスト</h3>
-          <div class="unit">数学Ⅱ ／ 加法定理</div>
-          <p>公式の かたち、角の わけ方、符号を みきわめる。2倍角・2直線の なす角まで。</p>
-          <div class="chapters">かたち ／ わける ／ ふごう ／ 倍角 ／ なす角 → さいごの 章</div>
-          <div class="btns"><a class="btn" href="kahou-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-kahou-quest">QR を 大きく 表示</a></div>
+          <div class="unit">加法定理</div>
+          <div class="btns"><a class="btn" href="kahou-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-kahou-quest">QR</a></div>
+          <details><summary>くわしく</summary><p>公式の かたち、角の わけ方、符号を みきわめる。2倍角・2直線の なす角まで。</p><div class="chapters">かたち ／ わける ／ ふごう ／ 倍角 ／ なす角 → さいごの 章</div></details>
         </div>
       </div>
     <div class="unitname">指数関数・対数関数</div>
-      <div class="game win">
+      <div class="game">
         <img class="shot" src="img/ruijoukon-quest.jpg" alt="累乗根クエストの画面" width="360" height="640">
-        <div>
+        <div class="body">
           <h3>累乗根クエスト</h3>
-          <div class="unit">数学Ⅱ ／ 累乗根と 指数の 拡張</div>
-          <p>数学Ⅱ。累乗根の 意味を おさえ、累乗根は すぐ 指数に 直して、指数を たすか ひくか かけるかを みきわめる。底を そろえる ところまで。計算は しない。モンスター図鑑を うめる。</p>
-          <div class="chapters">累乗根の 意味 ／ 指数に 直す ／ 直してから 計算 ／ 底を そろえる → さいごの 章</div>
-          <div class="btns"><a class="btn" href="ruijoukon-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-ruijoukon-quest">QR を 大きく 表示</a></div>
+          <div class="unit">累乗根と 指数の 拡張</div>
+          <div class="btns"><a class="btn" href="ruijoukon-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-ruijoukon-quest">QR</a></div>
+          <details><summary>くわしく</summary><p>数学Ⅱ。累乗根の 意味を おさえ、累乗根は すぐ 指数に 直して、指数を たすか ひくか かけるかを みきわめる。底を そろえる ところまで。計算は しない。モンスター図鑑を うめる。</p><div class="chapters">累乗根の 意味 ／ 指数に 直す ／ 直してから 計算 ／ 底を そろえる → さいごの 章</div></details>
         </div>
       </div>
-      <div class="game win">
+      <div class="game">
         <img class="shot" src="img/shisu-kansu-quest.jpg" alt="指数関数クエストの画面" width="360" height="640">
-        <div>
+        <div class="body">
           <h3>指数関数クエスト</h3>
-          <div class="unit">数学Ⅱ ／ 指数関数（グラフ・大小・方程式・不等式）</div>
-          <p>数学Ⅱ。グラフの 曲線を タップして えらび、底が 1 より 大きいか 小さいかで 増える・減る、不等号の 向きを みきわめる。底を そろえる 大小・方程式・不等式、t ＝ 2ˣ の 置きかえまで。モンスター図鑑を うめる。</p>
-          <div class="chapters">グラフ ／ 大小くらべ ／ 方程式 ／ 不等式 ／ 置きかえ → さいごの 章</div>
-          <div class="btns"><a class="btn" href="shisu-kansu-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-shisu-kansu-quest">QR を 大きく 表示</a></div>
+          <div class="unit">指数関数（グラフ・大小・方程式・不等式）</div>
+          <div class="btns"><a class="btn" href="shisu-kansu-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-shisu-kansu-quest">QR</a></div>
+          <details><summary>くわしく</summary><p>数学Ⅱ。グラフの 曲線を タップして えらび、底が 1 より 大きいか 小さいかで 増える・減る、不等号の 向きを みきわめる。底を そろえる 大小・方程式・不等式、t ＝ 2ˣ の 置きかえまで。モンスター図鑑を うめる。</p><div class="chapters">グラフ ／ 大小くらべ ／ 方程式 ／ 不等式 ／ 置きかえ → さいごの 章</div></details>
         </div>
       </div>
-    <h2 class="subject">数学A</h2>
+    </section>
+    <section class="subj" id="ma" data-name="数学A">
+    <nav class="tabs"><a href="#m1">数学Ⅰ</a><a href="#m2">数学Ⅱ</a><a href="#ma" class="on">数学A</a></nav>
     <div class="unitname">場合の数と確率</div>
-      <div class="game win">
+      <div class="game">
         <img class="shot" src="img/baai-no-kazu-quest.jpg" alt="場合の数クエストの画面" width="360" height="640">
-        <div>
+        <div class="body">
           <h3>場合の数クエスト</h3>
-          <div class="unit">数学A ／ 場合の数（集合・順列・組合せ）</div>
-          <p>数学A。集合の 記号を 読んで ベン図を ぬり、足すか かけるか・並べるか えらぶかを みきわめて、数え方の 式を 選ぶ。計算は しない。モンスター図鑑を うめる。</p>
-          <div class="chapters">集合 ／ 和の法則・積の法則 ／ 順列 ／ 組合せ ／ 同じものを含む順列 → さいごの 章</div>
-          <div class="btns"><a class="btn" href="baai-no-kazu-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-baai-no-kazu-quest">QR を 大きく 表示</a></div>
+          <div class="unit">場合の数（集合・順列・組合せ）</div>
+          <div class="btns"><a class="btn" href="baai-no-kazu-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-baai-no-kazu-quest">QR</a></div>
+          <details><summary>くわしく</summary><p>数学A。集合の 記号を 読んで ベン図を ぬり、足すか かけるか・並べるか えらぶかを みきわめて、数え方の 式を 選ぶ。計算は しない。モンスター図鑑を うめる。</p><div class="chapters">集合 ／ 和の法則・積の法則 ／ 順列 ／ 組合せ ／ 同じものを含む順列 → さいごの 章</div></details>
         </div>
       </div>
-      <div class="game win">
+      <div class="game">
         <img class="shot" src="img/kakuritsu-quest.jpg" alt="確率クエストの画面" width="360" height="640">
-        <div>
+        <div class="body">
           <h3>確率クエスト</h3>
-          <div class="unit">数学A ／ 確率</div>
-          <p>どの 考え方で 数えるかを みきわめて、なかまを あつめる。図を ぬる 問題も。</p>
-          <div class="chapters">第1章〜第6章 ＋ 裏ダンジョン</div>
-          <div class="btns"><a class="btn" href="kakuritsu-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-kakuritsu-quest">QR を 大きく 表示</a></div>
+          <div class="unit">確率</div>
+          <div class="btns"><a class="btn" href="kakuritsu-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-kakuritsu-quest">QR</a></div>
+          <details><summary>くわしく</summary><p>どの 考え方で 数えるかを みきわめて、なかまを あつめる。図を ぬる 問題も。</p><div class="chapters">第1章〜第6章 ＋ 裏ダンジョン</div></details>
         </div>
       </div>
+    </section>
+    <section class="subj def" id="m1" data-name="数学Ⅰ">
+    <nav class="tabs"><a href="#m1" class="on">数学Ⅰ</a><a href="#m2">数学Ⅱ</a><a href="#ma">数学A</a></nav>
+    <div class="unitname">図形と計量</div>
+      <div class="game">
+        <img class="shot" src="img/sankakuhi-zenhan-quest.jpg" alt="三角比クエストⅠ（直角三角形）の画面" width="360" height="640">
+        <div class="body">
+          <h3>三角比クエストⅠ（直角三角形）</h3>
+          <div class="unit">三角比（直角三角形・鋭角）</div>
+          <div class="btns"><a class="btn" href="sankakuhi-zenhan-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-sankakuhi-zenhan-quest">QR</a></div>
+          <details><summary>くわしく</summary><p>数学Ⅰ。直角三角形の 斜辺・向かいの 辺・となりの 辺を みきわめ、2辺の 比が sin・cos・tan の どれかを 選ぶ。回した 三角形・辺の 長さ・たて と よこ・相互関係・90° − θ まで。モンスター図鑑を うめる。</p><div class="chapters">定義 ／ 回して 定義 ／ 辺の 長さから ／ たて・よこ ／ 相互関係 ／ 90° − θ → さいごの 章</div></details>
+        </div>
+      </div>
+      <div class="game">
+        <img class="shot" src="img/sankakuhi-quest.jpg" alt="三角比クエストⅡ（三角比の拡張）の画面" width="360" height="640">
+        <div class="body">
+          <h3>三角比クエストⅡ（三角比の拡張）</h3>
+          <div class="unit">三角比の 拡張（0° ≦ θ ≦ 180°）</div>
+          <div class="btns"><a class="btn" href="sankakuhi-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-sankakuhi-quest">QR</a></div>
+          <details><summary>くわしく</summary><p>数学Ⅰ。半円の 上の 場所・値・符号を みきわめる。180° − θ、方程式・不等式・のこり2つ・木の 高さや 俯角まで。モンスター図鑑を うめる。</p><div class="chapters">角の いち ／ あたい ／ ＋ と − ／ 180° − θ・90° − θ ／ 方程式 ／ 不等式 ／ のこり2つ ／ はかる → さいごの 章</div></details>
+        </div>
+      </div>
+      <div class="game">
+        <img class="shot" src="img/sankakuhi-keiryou-quest.jpg" alt="三角比クエストⅢ（図形の計量）の画面" width="360" height="640">
+        <div class="body">
+          <h3>三角比クエストⅢ（図形の計量）</h3>
+          <div class="unit">図形の 計量（正弦定理・余弦定理・面積・空間図形）</div>
+          <div class="btns"><a class="btn" href="sankakuhi-keiryou-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-sankakuhi-keiryou-quest">QR</a></div>
+          <details><summary>くわしく</summary><p>数学Ⅰ。わかって いる 辺と 角を 見て、正弦定理・余弦定理・面積の 公式の どれを、どの 形で 立てるかを みきわめる。鋭角・鈍角の 見分け、内接円、直方体の 中の 三角形まで。モンスター図鑑を うめる。</p><div class="chapters">定理を えらぶ ／ 正弦定理 ／ 余弦定理 ／ 鋭角・直角・鈍角 ／ 面積 ／ 空間図形 → さいごの 章</div></details>
+        </div>
+      </div>
+    </section>
+    </div>
   </section>
 
   <section class="win">
     <h2>▼ 授業での 使い方</h2>
     <ol>
       <li>生徒の 端末で、QR か アドレスを 開くだけです。インストールも 登録も いりません。</li>
-      <li>「QR を 大きく 表示」を 押すと、教室の 画面に 映せる 大きさの QR が 出ます。</li>
+      <li>ゲームの 「QR」を 押すと、教室の 画面に 映せる 大きさの QR が 出ます。</li>
+      <li>上の 「数学Ⅰ・数学Ⅱ・数学A」で 科目を 切りかえます。各ゲームの 説明と 章は 「くわしく」で 開きます。</li>
       <li>章は どこからでも えらべます。授業で あつかった ところから 始められます。</li>
       <li>まちがえると、まちがえ方に あわせた 説明が 出ます。</li>
       <li>あそんだ 記録は、その 端末の ブラウザの 中に のこります。<span class="note">（ほかの 端末には 引きつがれません。ブラウザの 記録を 消すと、はじめからに なります。）</span></li>
@@ -219,16 +231,16 @@ a { color: #7fe8ff; }
 
 <!-- QR を 大きく 表示 -->
 <div class="qrbig" id="qr-top"><div class="code"><img src="qr/top.png" alt="このページのQRコード" width="280" height="280"></div><div class="name">math-terakoya</div><div class="url">https://math-terakoya.github.io/</div><a class="btn" href="#">とじる</a></div>
-<div class="qrbig" id="qr-sankakuhi-zenhan-quest"><div class="code"><img src="qr/sankakuhi-zenhan-quest.png" alt="三角比クエストⅠ（直角三角形）のQRコード" width="280" height="280"></div><div class="name">三角比クエストⅠ（直角三角形）</div><div class="url">https://math-terakoya.github.io/sankakuhi-zenhan-quest/</div><a class="btn" href="#games">とじる</a></div>
-<div class="qrbig" id="qr-sankakuhi-quest"><div class="code"><img src="qr/sankakuhi-quest.png" alt="三角比クエストⅡ（三角比の拡張）のQRコード" width="280" height="280"></div><div class="name">三角比クエストⅡ（三角比の拡張）</div><div class="url">https://math-terakoya.github.io/sankakuhi-quest/</div><a class="btn" href="#games">とじる</a></div>
-<div class="qrbig" id="qr-sankakuhi-keiryou-quest"><div class="code"><img src="qr/sankakuhi-keiryou-quest.png" alt="三角比クエストⅢ（図形の計量）のQRコード" width="280" height="280"></div><div class="name">三角比クエストⅢ（図形の計量）</div><div class="url">https://math-terakoya.github.io/sankakuhi-keiryou-quest/</div><a class="btn" href="#games">とじる</a></div>
-<div class="qrbig" id="qr-ryouiki-quest"><div class="code"><img src="qr/ryouiki-quest.png" alt="領域クエストのQRコード" width="280" height="280"></div><div class="name">領域クエスト</div><div class="url">https://math-terakoya.github.io/ryouiki-quest/</div><a class="btn" href="#games">とじる</a></div>
-<div class="qrbig" id="qr-tan-i-en-quest"><div class="code"><img src="qr/tan-i-en-quest.png" alt="単位円クエストのQRコード" width="280" height="280"></div><div class="name">単位円クエスト</div><div class="url">https://math-terakoya.github.io/tan-i-en-quest/</div><a class="btn" href="#games">とじる</a></div>
-<div class="qrbig" id="qr-sankaku-graph-quest"><div class="code"><img src="qr/sankaku-graph-quest.png" alt="三角グラフクエストのQRコード" width="280" height="280"></div><div class="name">三角グラフクエスト</div><div class="url">https://math-terakoya.github.io/sankaku-graph-quest/</div><a class="btn" href="#games">とじる</a></div>
-<div class="qrbig" id="qr-kahou-quest"><div class="code"><img src="qr/kahou-quest.png" alt="加法定理クエストのQRコード" width="280" height="280"></div><div class="name">加法定理クエスト</div><div class="url">https://math-terakoya.github.io/kahou-quest/</div><a class="btn" href="#games">とじる</a></div>
-<div class="qrbig" id="qr-ruijoukon-quest"><div class="code"><img src="qr/ruijoukon-quest.png" alt="累乗根クエストのQRコード" width="280" height="280"></div><div class="name">累乗根クエスト</div><div class="url">https://math-terakoya.github.io/ruijoukon-quest/</div><a class="btn" href="#games">とじる</a></div>
-<div class="qrbig" id="qr-shisu-kansu-quest"><div class="code"><img src="qr/shisu-kansu-quest.png" alt="指数関数クエストのQRコード" width="280" height="280"></div><div class="name">指数関数クエスト</div><div class="url">https://math-terakoya.github.io/shisu-kansu-quest/</div><a class="btn" href="#games">とじる</a></div>
-<div class="qrbig" id="qr-baai-no-kazu-quest"><div class="code"><img src="qr/baai-no-kazu-quest.png" alt="場合の数クエストのQRコード" width="280" height="280"></div><div class="name">場合の数クエスト</div><div class="url">https://math-terakoya.github.io/baai-no-kazu-quest/</div><a class="btn" href="#games">とじる</a></div>
-<div class="qrbig" id="qr-kakuritsu-quest"><div class="code"><img src="qr/kakuritsu-quest.png" alt="確率クエストのQRコード" width="280" height="280"></div><div class="name">確率クエスト</div><div class="url">https://math-terakoya.github.io/kakuritsu-quest/</div><a class="btn" href="#games">とじる</a></div>
+<div class="qrbig" id="qr-sankakuhi-zenhan-quest"><div class="code"><img src="qr/sankakuhi-zenhan-quest.png" alt="三角比クエストⅠ（直角三角形）のQRコード" width="280" height="280"></div><div class="name">三角比クエストⅠ（直角三角形）</div><div class="url">https://math-terakoya.github.io/sankakuhi-zenhan-quest/</div><a class="btn" href="#m1">とじる</a></div>
+<div class="qrbig" id="qr-sankakuhi-quest"><div class="code"><img src="qr/sankakuhi-quest.png" alt="三角比クエストⅡ（三角比の拡張）のQRコード" width="280" height="280"></div><div class="name">三角比クエストⅡ（三角比の拡張）</div><div class="url">https://math-terakoya.github.io/sankakuhi-quest/</div><a class="btn" href="#m1">とじる</a></div>
+<div class="qrbig" id="qr-sankakuhi-keiryou-quest"><div class="code"><img src="qr/sankakuhi-keiryou-quest.png" alt="三角比クエストⅢ（図形の計量）のQRコード" width="280" height="280"></div><div class="name">三角比クエストⅢ（図形の計量）</div><div class="url">https://math-terakoya.github.io/sankakuhi-keiryou-quest/</div><a class="btn" href="#m1">とじる</a></div>
+<div class="qrbig" id="qr-ryouiki-quest"><div class="code"><img src="qr/ryouiki-quest.png" alt="領域クエストのQRコード" width="280" height="280"></div><div class="name">領域クエスト</div><div class="url">https://math-terakoya.github.io/ryouiki-quest/</div><a class="btn" href="#m2">とじる</a></div>
+<div class="qrbig" id="qr-tan-i-en-quest"><div class="code"><img src="qr/tan-i-en-quest.png" alt="単位円クエストのQRコード" width="280" height="280"></div><div class="name">単位円クエスト</div><div class="url">https://math-terakoya.github.io/tan-i-en-quest/</div><a class="btn" href="#m2">とじる</a></div>
+<div class="qrbig" id="qr-sankaku-graph-quest"><div class="code"><img src="qr/sankaku-graph-quest.png" alt="三角グラフクエストのQRコード" width="280" height="280"></div><div class="name">三角グラフクエスト</div><div class="url">https://math-terakoya.github.io/sankaku-graph-quest/</div><a class="btn" href="#m2">とじる</a></div>
+<div class="qrbig" id="qr-kahou-quest"><div class="code"><img src="qr/kahou-quest.png" alt="加法定理クエストのQRコード" width="280" height="280"></div><div class="name">加法定理クエスト</div><div class="url">https://math-terakoya.github.io/kahou-quest/</div><a class="btn" href="#m2">とじる</a></div>
+<div class="qrbig" id="qr-ruijoukon-quest"><div class="code"><img src="qr/ruijoukon-quest.png" alt="累乗根クエストのQRコード" width="280" height="280"></div><div class="name">累乗根クエスト</div><div class="url">https://math-terakoya.github.io/ruijoukon-quest/</div><a class="btn" href="#m2">とじる</a></div>
+<div class="qrbig" id="qr-shisu-kansu-quest"><div class="code"><img src="qr/shisu-kansu-quest.png" alt="指数関数クエストのQRコード" width="280" height="280"></div><div class="name">指数関数クエスト</div><div class="url">https://math-terakoya.github.io/shisu-kansu-quest/</div><a class="btn" href="#m2">とじる</a></div>
+<div class="qrbig" id="qr-baai-no-kazu-quest"><div class="code"><img src="qr/baai-no-kazu-quest.png" alt="場合の数クエストのQRコード" width="280" height="280"></div><div class="name">場合の数クエスト</div><div class="url">https://math-terakoya.github.io/baai-no-kazu-quest/</div><a class="btn" href="#ma">とじる</a></div>
+<div class="qrbig" id="qr-kakuritsu-quest"><div class="code"><img src="qr/kakuritsu-quest.png" alt="確率クエストのQRコード" width="280" height="280"></div><div class="name">確率クエスト</div><div class="url">https://math-terakoya.github.io/kakuritsu-quest/</div><a class="btn" href="#ma">とじる</a></div>
 </body>
 </html>
