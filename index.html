@@ -36,6 +36,7 @@ h2.subject { margin: 22px 0 4px; font-size: 22px; color: #fff; border-bottom: 2p
 .game img.shot { width: 76px; height: auto; border: 2px solid #555; display: block; }
 .game h3 { margin: 0; font-size: 18px; color: #fff; line-height: 1.4; }
 .unit { color: #7fe8ff; font-size: 13px; margin: 2px 0 2px; }
+.tag { display: inline-block; vertical-align: 2px; margin-left: 6px; padding: 0 6px; font-size: 12px; font-weight: normal; color: #000; background: #9be38f; border-radius: 3px; line-height: 1.6; }   /* 道具（ゲームでは ない）の 札 */
 .game p { margin: 6px 0 6px; font-size: 14px; }
 .chapters { color: #ccc; font-size: 13px; }
 details summary { cursor: pointer; color: #aaa; font-size: 13px; margin-top: 6px; }
@@ -75,7 +76,7 @@ a { color: #7fe8ff; }
   </section>
 
   <section class="win" id="games">
-    <h2>▼ ゲーム（15本）</h2>
+    <h2>▼ ゲームと 道具（17本）</h2>
     <p class="note tabnote">科目を えらんで ください。</p>
     <div class="subjs">
     <section class="subj" id="m2" data-name="数学Ⅱ">
@@ -147,12 +148,31 @@ a { color: #7fe8ff; }
         </div>
       </div>
       <div class="game">
+        <img class="shot" src="img/taisuu-kouhan-quest.jpg" alt="対数クエスト（後半）の画面" width="360" height="640">
+        <div class="body">
+          <h3>対数クエスト（後半）</h3>
+          <div class="unit">底の 変換と 対数の かけざん</div>
+          <div class="btns"><a class="btn" href="taisuu-kouhan-quest/">▶ あそぶ</a><a class="btn sub" href="#qr-taisuu-kouhan-quest">QR</a></div>
+          <details><summary>くわしく</summary><p>数学Ⅱ。底の 変換公式で 元の 真数を 分子、元の 底を 分母に。底を そろえて 値を 出す、となりの 真数と 底が 同じ log を つないで 1つに する、真数を 小さく して 指数を log の 前に おろす。前半の あとに。モンスター図鑑を うめる。</p><div class="chapters">底の 変換公式 ／ 底を そろえて 値 ／ 対数の かけざん ／ 真数を 小さく → さいごの 章</div></details>
+        </div>
+      </div>
+      <div class="game">
         <img class="shot" src="img/shisu-keisanki.jpg" alt="指数計算機の画面" width="360" height="640">
         <div class="body">
-          <h3>指数計算機</h3>
+          <h3>指数計算機 <span class="tag">道具</span></h3>
           <div class="unit">底と 指数から 値を 出す 計算機</div>
-          <div class="btns"><a class="btn" href="shisu-keisanki/">▶ あそぶ</a><a class="btn sub" href="#qr-shisu-keisanki">QR</a></div>
+          <div class="btns"><a class="btn" href="shisu-keisanki/">▶ つかう</a><a class="btn sub" href="#qr-shisu-keisanki">QR</a></div>
           <details><summary>くわしく</summary><p>数学Ⅱ。底と 指数を 入れると 値が 出る。A と B の 2つを 並べて 見られる。指数が 整数なら ちょうどの 値（整数は 全部の 桁）、分数・小数の 指数は 有効数字 15桁 以上。授業で 大きさを くらべる ときに。</p><div class="chapters">底（正の 数）と 指数（整数・小数・分数・マイナス）を 入れる だけ</div></details>
+        </div>
+      </div>
+    <div class="unitname">微分法</div>
+      <div class="game">
+        <img class="shot" src="img/heikin-henkaritsu.jpg" alt="平均変化率グラフの画面" width="360" height="640">
+        <div class="body">
+          <h3>平均変化率グラフ <span class="tag">道具</span></h3>
+          <div class="unit">2点を 動かして 平均変化率を 見る</div>
+          <div class="btns"><a class="btn" href="heikin-henkaritsu/">▶ つかう</a><a class="btn sub" href="#qr-heikin-henkaritsu">QR</a></div>
+          <details><summary>くわしく</summary><p>数学Ⅱ。y ＝ 2ˣ・y ＝ x²・3次式（係数を 自分で 入れる ことも できる）の グラフの 上で 2点 A・B を 動かすと、(f(b) − f(a)) ／ (b − a) の 式と 値、2点を 通る 直線が 出る。幅 h を 決めて 動かす ことも できる。増加・減少で 色が かわる。</p><div class="chapters">関数を えらぶ → a・b を 動かす（グラフの 上を さわる・数を 入れる・スライダー）</div></details>
         </div>
       </div>
     </section>
@@ -278,7 +298,9 @@ a { color: #7fe8ff; }
 <div class="qrbig" id="qr-ruijoukon-quest"><div class="code"><img src="qr/ruijoukon-quest.png" alt="累乗根クエストのQRコード" width="280" height="280"></div><div class="name">累乗根クエスト</div><div class="url">https://math-terakoya.github.io/ruijoukon-quest/</div><a class="btn" href="#m2">とじる</a></div>
 <div class="qrbig" id="qr-shisu-kansu-quest"><div class="code"><img src="qr/shisu-kansu-quest.png" alt="指数関数クエストのQRコード" width="280" height="280"></div><div class="name">指数関数クエスト</div><div class="url">https://math-terakoya.github.io/shisu-kansu-quest/</div><a class="btn" href="#m2">とじる</a></div>
 <div class="qrbig" id="qr-taisuu-quest"><div class="code"><img src="qr/taisuu-quest.png" alt="対数クエスト（前半）のQRコード" width="280" height="280"></div><div class="name">対数クエスト（前半）</div><div class="url">https://math-terakoya.github.io/taisuu-quest/</div><a class="btn" href="#m2">とじる</a></div>
+<div class="qrbig" id="qr-taisuu-kouhan-quest"><div class="code"><img src="qr/taisuu-kouhan-quest.png" alt="対数クエスト（後半）のQRコード" width="280" height="280"></div><div class="name">対数クエスト（後半）</div><div class="url">https://math-terakoya.github.io/taisuu-kouhan-quest/</div><a class="btn" href="#m2">とじる</a></div>
 <div class="qrbig" id="qr-shisu-keisanki"><div class="code"><img src="qr/shisu-keisanki.png" alt="指数計算機のQRコード" width="280" height="280"></div><div class="name">指数計算機</div><div class="url">https://math-terakoya.github.io/shisu-keisanki/</div><a class="btn" href="#m2">とじる</a></div>
+<div class="qrbig" id="qr-heikin-henkaritsu"><div class="code"><img src="qr/heikin-henkaritsu.png" alt="平均変化率グラフのQRコード" width="280" height="280"></div><div class="name">平均変化率グラフ</div><div class="url">https://math-terakoya.github.io/heikin-henkaritsu/</div><a class="btn" href="#m2">とじる</a></div>
 <div class="qrbig" id="qr-baai-no-kazu-quest"><div class="code"><img src="qr/baai-no-kazu-quest.png" alt="場合の数クエストのQRコード" width="280" height="280"></div><div class="name">場合の数クエスト</div><div class="url">https://math-terakoya.github.io/baai-no-kazu-quest/</div><a class="btn" href="#ma">とじる</a></div>
 <div class="qrbig" id="qr-kakuritsu-quest"><div class="code"><img src="qr/kakuritsu-quest.png" alt="確率クエストのQRコード" width="280" height="280"></div><div class="name">確率クエスト</div><div class="url">https://math-terakoya.github.io/kakuritsu-quest/</div><a class="btn" href="#ma">とじる</a></div>
 <div class="qrbig" id="qr-naibun-gaibun-quest"><div class="code"><img src="qr/naibun-gaibun-quest.png" alt="内分・外分・二等分線クエストのQRコード" width="280" height="280"></div><div class="name">内分・外分・二等分線クエスト</div><div class="url">https://math-terakoya.github.io/naibun-gaibun-quest/</div><a class="btn" href="#ma">とじる</a></div>

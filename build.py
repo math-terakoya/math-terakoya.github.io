@@ -16,12 +16,13 @@ SID = ['m1', 'm2', 'ma', 'mb', 'm3', 'mc']   # 科目の 切りかえの 名前�
 
 def card(key, subject, sid):
     g = G[key]
+    tag = ' <span class="tag">道具</span>' if g.get('tool') else ''   # 手を 動かして 使う もの（ゲームでは ない）に 札（11-16 先生）
     return f'''      <div class="game">
         <img class="shot" src="img/{key}.jpg" alt="{e(g['title'])}の画面" width="360" height="640">
         <div class="body">
-          <h3>{e(g['title'])}</h3>
+          <h3>{e(g['title'])}{tag}</h3>
           <div class="unit">{e(g['topic'])}</div>
-          <div class="btns"><a class="btn" href="{key}/">▶ あそぶ</a><a class="btn sub" href="#qr-{key}">QR</a></div>
+          <div class="btns"><a class="btn" href="{key}/">▶ {'つかう' if g.get('tool') else 'あそぶ'}</a><a class="btn sub" href="#qr-{key}">QR</a></div>
           <details><summary>くわしく</summary><p>{e(g['desc'])}</p><div class="chapters">{e(g['chapters'])}</div></details>
         </div>
       </div>'''
@@ -31,7 +32,7 @@ used, back = [], {}
 subs = D['subjects']
 n_all = sum(len(u['games']) for s in subs for u in s['units'])
 tabs = lambda cur: '<nav class="tabs">' + ''.join(f'<a href="#{SID[i]}"' + (' class="on"' if i == cur else '') + f'>{e(s["name"])}</a>' for i, s in enumerate(subs)) + '</nav>'
-out = ['<section class="win" id="games">', f'    <h2>▼ ゲーム（{n_all}本）</h2>', '    <p class="note tabnote">科目を えらんで ください。</p>', '    <div class="subjs">']
+out = ['<section class="win" id="games">', f'    <h2>▼ ゲームと 道具（{n_all}本）</h2>', '    <p class="note tabnote">科目を えらんで ください。</p>', '    <div class="subjs">']
 # さいしょに 出す 科目（いちばん はじめ）は 最後に 置く：ほかの 科目が 開いて いる ときは CSS（:target ~）で かくす
 order = list(range(1, len(subs))) + [0]
 for i in order:
